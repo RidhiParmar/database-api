@@ -23,6 +23,16 @@ app.post('/Udata',(req,res)=>
            res.status(400).send(e);
        })
 })
+app.get('/udata',(req,res)=>
+{
+   ud.find().then((udata)=>
+   {
+            res.send({udata})
+   },(e)=>
+   {
+         res.status(400).send(e)
+   })
+})
 app.listen(6600,()=>
 {
     console.log('work on port number 6600')
