@@ -1,10 +1,10 @@
-var express=require('express');
-var bodyparse =require('body-parser')
+const express=require('express');
+const bodyparse =require('body-parser')
 
 
-var {mongoose}=require('./db/datacon')
-var{ud} =require('./model/umodel')
-var{sdata} =require('./model/sdata')
+const {mongoose}=require('./db/datacon')
+const {ud} =require('./model/umodel')
+const {sdata} =require('./model/sdata')
 
 
 var app =express();
