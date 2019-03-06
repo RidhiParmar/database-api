@@ -1,8 +1,12 @@
+const express =require('express')
+
+
 const {ObjectId} =require('mongodb')
 const {mongoose} =require('./server/db/datacon');
 const {ud} =require('./server/model/umodel')
 
-var id = '5c7f72243c29984f3deb0dca'
+var app =express()
+var id ='5c7f8ef9a42948583f192b04'
 // if(!ObjectId.isValid(id))
 // {
 //   console.log('object id is invalid');
@@ -22,6 +26,7 @@ var id = '5c7f72243c29984f3deb0dca'
     //     console.log('USerEmail by One:',user)
     // })
 
+    
     ud.findById(id).then((user)=>
     {
         if(!user)
@@ -35,3 +40,5 @@ var id = '5c7f72243c29984f3deb0dca'
     {
         console.log(e)
     })
+
+    
