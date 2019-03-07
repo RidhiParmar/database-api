@@ -16,7 +16,7 @@ const {ud} =require('./server/model/umodel')
     
     // })
 
-    ud.remove({}).then((result)=>
-    {
-            console.log(result)
-    })
+    // ud.remove({}).then((result)=>
+    // {
+    //         console.log(result)
+    // })
