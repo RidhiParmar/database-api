@@ -1,6 +1,6 @@
 const mongoose =require('mongoose') 
 const validator =require('validator')
-const jwt =require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const _=require('lodash')
 
 
@@ -35,6 +35,10 @@ var userschema = new mongoose.Schema({
         }
     }]
 })
+
+
+
+
 userschema.methods.toJSON = function()
 {
     var user = this
@@ -52,5 +56,27 @@ userschema.methods.generateAuthToken = function()
         return token
     })
 }
+
+userschema.statics.findByToken =function(token)
+{
+var user = this
+var decode;
+try{ 
+
+   decode = jwt.verify(token,'udata66')
+}
+catch(e)
+{
+   return Promise.reject()
+}
+return user.findOne(
+    {
+        '_id':decode._id,
+        'tokens.token':token,
+        'tokens.access':'auth'
+
+    })
+}
+
 var ud = mongoose.model('Userdata',userschema)
 module.exports = {ud}

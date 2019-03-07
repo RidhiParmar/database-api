@@ -6,7 +6,7 @@ const {ObjectId}=require('mongodb')
 const {mongoose}=require('./db/datacon')
 const {ud} =require('./model/umodel')
 const {sdata} =require('./model/sdata')
-
+const {authenticate}=require('./middleware/authenticate')
 
 var app =express();
 app.use(bodyparse.json())
@@ -111,6 +111,12 @@ app.post('/User',(req,res)=>
         console.log(e)
          res.status(400).send(e)
     })
+
+})
+
+app.get('/user/me',authenticate,(req,res)=>
+{
+    res.send(req.user)
 
 })
 app.listen(6600,()=>
