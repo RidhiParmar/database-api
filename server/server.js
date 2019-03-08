@@ -100,7 +100,6 @@ app.patch('/Udata/:id',(req,res)=>
 app.post('/User',(req,res)=>
 {
     var body =_.pick(req.body,['email','password'])
-
     var udata = new ud(body)
     udata.generateAuthToken().then((result)=>
     {
